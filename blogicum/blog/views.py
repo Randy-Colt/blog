@@ -224,4 +224,5 @@ class CommentUpdateView(CommentUpDelMixin, LoginRequiredMixin, UpdateView):
 
 class CommentDeleteView(CommentUpDelMixin, LoginRequiredMixin, DeleteView):
     """Page with the comment deletion."""
+
     pass
