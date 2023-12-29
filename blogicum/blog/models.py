@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
 from django.urls import reverse
 
 from core.models import PublishedTimeModel, TitleModel
@@ -40,7 +40,7 @@ class Location(PublishedTimeModel):
         verbose_name_plural = 'Местоположения'
 
     def __str__(self) -> str:
-        return self.name
+        return self.name[:20]
 
 
 class Post(PublishedTimeModel, TitleModel):
@@ -62,7 +62,6 @@ class Post(PublishedTimeModel, TitleModel):
         User,
         on_delete=models.CASCADE,
         verbose_name='Автор публикации',
-        related_name='posts'
     )
     location = models.ForeignKey(
         Location,
@@ -75,10 +74,10 @@ class Post(PublishedTimeModel, TitleModel):
         on_delete=models.SET_NULL,
         null=True,
         verbose_name='Категория',
-        related_name='posts'
     )
 
     class Meta:
+        default_related_name = 'posts'
         verbose_name = 'публикация'
         verbose_name_plural = 'Публикации'
 
@@ -103,8 +102,11 @@ class Comment(PublishedTimeModel):
     text = models.TextField('Текст комментария')
 
     class Meta:
+        ordering = ('created_at',)
         verbose_name = 'комментарий'
         verbose_name_plural = 'Комментарии'
 
     def __str__(self) -> str:
-        return self.author
+        return (
+            f'{self.text[:15]}...'
+        )

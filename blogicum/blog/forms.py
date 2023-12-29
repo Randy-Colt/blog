@@ -1,5 +1,6 @@
 from django import forms
-from .models import Post, Comment
+
+from .models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
@@ -7,7 +8,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        exclude = ('author', 'created_at', 'is_published')
+        exclude = ('author',)
         widgets = {
             'pub_date': forms.DateTimeInput(
                 format='%Y-%m-%dT%H:%M',
@@ -20,5 +21,8 @@ class CommentForm(forms.ModelForm):
     """Form for creating comment."""
 
     class Meta:
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 3})
+        }
         model = Comment
         fields = ('text',)

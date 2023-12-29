@@ -32,4 +32,4 @@ class TitleModel(models.Model):
         abstract = True
 
     def __str__(self) -> str:
-        return self.title
+        return self.title[:20]
