@@ -34,7 +34,7 @@ def add_annotate_ordering():
 def get_posts() -> QuerySet:
     """Filtered posts by date and published."""
     return add_annotate_ordering().filter(
-            is_published=True,
-            category__is_published=True,
-            pub_date__lte=datetime.now()
-            )
+        is_published=True,
+        category__is_published=True,
+        pub_date__lte=datetime.now()
+    )
