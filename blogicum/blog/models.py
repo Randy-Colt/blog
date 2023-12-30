@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 
 from core.models import PublishedTimeModel, TitleModel
+from .constants import TITLE_TEXT_SLICE, COMMENT_TEXT_SLICE
 
 User = get_user_model()
 
@@ -40,7 +41,7 @@ class Location(PublishedTimeModel):
         verbose_name_plural = 'Местоположения'
 
     def __str__(self) -> str:
-        return self.name[:20]
+        return self.name[:TITLE_TEXT_SLICE]
 
 
 class Post(PublishedTimeModel, TitleModel):
@@ -108,5 +109,7 @@ class Comment(PublishedTimeModel):
 
     def __str__(self) -> str:
         return (
-            f'{self.text[:15]}...'
+            f'Комментарий автора "{self.author}"\n'
+            f'к посту "{self.post}",\n'
+            f'текст: "{self.text[:COMMENT_TEXT_SLICE]}..."'
         )

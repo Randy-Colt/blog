@@ -1,6 +1,8 @@
 """Module with abstract models."""
 from django.db import models
 
+from blog.constants import TITLE_TEXT_SLICE
+
 
 class PublishedTimeModel(models.Model):
     """Abstract model. Adds flag is_published and creation date."""
@@ -32,4 +34,4 @@ class TitleModel(models.Model):
         abstract = True
 
     def __str__(self) -> str:
-        return self.title[:20]
+        return self.title[:TITLE_TEXT_SLICE]

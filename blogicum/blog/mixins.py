@@ -3,10 +3,9 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import ListView
 
+from .constants import POSTS_PER_PAGE
 from .models import Comment, Post
 from .utils import get_posts
-
-POSTS_PER_PAGE = 10
 
 
 class ListPostMixin(ListView):

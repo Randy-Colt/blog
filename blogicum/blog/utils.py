@@ -24,12 +24,17 @@ def get_detailed_post(post_id: int) -> Post:
     )
 
 
-def get_posts() -> QuerySet:
-    """Filtered posts by date and published."""
-    return get_all_posts().filter(
-        is_published=True,
-        category__is_published=True,
-        pub_date__lte=datetime.now()
-    ).annotate(
+def add_annotate_ordering():
+    """Add annotate and date sorting to all posts."""
+    return get_all_posts().annotate(
         comment_count=Count('comments')
     ).order_by('-pub_date')
+
+
+def get_posts() -> QuerySet:
+    """Filtered posts by date and published."""
+    return add_annotate_ordering().filter(
+            is_published=True,
+            category__is_published=True,
+            pub_date__lte=datetime.now()
+            )

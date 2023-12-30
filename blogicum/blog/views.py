@@ -8,14 +8,14 @@ from django.views.generic import (
     DetailView,
     UpdateView)
 
-from .forms import PostForm, CommentForm
+from .forms import CommentForm, PostForm
 from .mixins import (
     CommentMixin,
     CommentUpDelMixin,
     ListPostMixin,
     UpDelPostMixin)
 from .models import Category, Post, User
-from .utils import get_all_posts, get_posts, get_detailed_post
+from .utils import add_annotate_ordering, get_detailed_post, get_posts
 
 
 class PostListView(ListPostMixin):
@@ -114,11 +114,9 @@ class ProfileView(ListPostMixin):
 
     def get_queryset(self):
         if self.request.user.username == self.kwargs['username']:
-            return get_all_posts().filter(
+            return add_annotate_ordering().filter(
                 author__username=self.kwargs['username']
-            ).annotate(
-                comment_count=Count('comments')
-            ).order_by('-pub_date')
+            )
         else:
             return get_posts().filter(
                 author__username=self.kwargs['username']
