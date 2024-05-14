@@ -13,7 +13,7 @@
 
 ### Примеры страниц
 
-Главная:
+#Главная:
 ![image](https://github.com/Randy-Colt/blogicum/assets/145157078/0e7d8e07-5f1a-4180-b5c8-7e0a31dba2cf)
 
 Страница регистрации:
