@@ -13,13 +13,13 @@
 
 ### Примеры страниц
 
-#Главная:
+**Главная:**
 ![image](https://github.com/Randy-Colt/blogicum/assets/145157078/0e7d8e07-5f1a-4180-b5c8-7e0a31dba2cf)
 
-Страница регистрации:
+**Страница регистрации:**
 ![image](https://github.com/Randy-Colt/blogicum/assets/145157078/edd1f615-27ef-4c4e-acd6-c666b2b0d588)
 
-Страница поста:
+**Страница поста:**
 ![image](https://github.com/Randy-Colt/blogicum/assets/145157078/d831a5db-7de7-45ea-88d0-31c993b10470)
 
 
